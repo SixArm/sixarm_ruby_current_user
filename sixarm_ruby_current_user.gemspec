@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
 
   s.name              = "sixarm_ruby_current_user"
   s.summary           = "SixArm.com » Ruby » CurrentUser module for Ruby On Rails to get and set a user in a session"
-  s.version           = "1.2.6"
+  s.version           = "1.3.2"
   s.author            = "SixArm"
   s.email             = "sixarm@sixarm.com"
   s.homepage          = "http://sixarm.com/"
@@ -13,14 +13,14 @@ Gem::Specification.new do |s|
   s.require_path      = 'lib'
   s.has_rdoc          = true
 
-  top_files           = [".gemtest","Rakefile","README.rdoc","INSTALL.txt","LICENSE.txt"]
+  top_files           = [".gemtest", "CHANGELOG.txt", "INSTALL.txt", "LICENSE.txt", "Rakefile", "README.rdoc", "VERSION"]
   lib_files           = ["lib/#{s.name}.rb"]
   test_files          = ["test/#{s.name}_test.rb"]
 
   s.files             = top_files + lib_files + test_files
   s.test_files        = test_files
 
-  s.add_dependency('sixarm_ruby_current_user_id', '= 1.2.6')  
-  s.add_dependency('sixarm_ruby_active_record_mock', '>= 1.3.0') # for test
+  s.add_dependency('sixarm_ruby_current_user_id', '= 1.3.2')  
+  s.add_dependency('sixarm_ruby_active_record_mock', '>= 1.3.2') # for test
 
 end

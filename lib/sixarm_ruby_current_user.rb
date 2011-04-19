@@ -12,30 +12,28 @@ module CurrentUser
 
   # Get the current user:
   #  - if it is already set, then return it without doing a lookup
-  #  - otherwise, find the user via #current_user_find
+  #  - otherwise, call User.find with the current_user_id
   #
-  # If the current user is not set, and the current user id is nil,
-  # then this returns nil because current_user_find returns nil.
+  # Return the current user, or nil if not found
   
   def current_user
-    @current_user ||= current_user_find_by_id(current_user_id)
+    @current_user ||= User.find(self.current_user_id)
   end
   
 
-  # Set the current user and also set the current user id.
+  # Is there a current user in the Rails session?
+  
+  def current_user?
+    !!self.current_user 
+  end
+
+
+  # Set the current user
+  # Return the current user
   
   def current_user=(user)
+    self.current_user_id = (user ? user.id : nil)
     @current_user = user
-    return current_user_id = (user ? user.id : nil)
   end
-  
-
-  # Return the current user by calling User.find with a user id.
-  # If the user id is nil, then return nil for the current user.
-  
-  def current_user_find_by_id(id)
-    return id ? User.find(id) : nil
-  end
-  
 
 end

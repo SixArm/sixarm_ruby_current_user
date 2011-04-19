@@ -1,10 +1,8 @@
+= SixArm.com » Ruby » CurrentUser module with current_user methods
 
-= SixArm Ruby Gem: CurrentUser module with current_user methods
-
-Author:: Joel Parker Henderson, joelparkerhenderson@gmail.com
-Copyright:: Copyright (c) 2005-2010 Joel Parker Henderson
-License:: CreativeCommons License, Non-commercial Share Alike
-License:: LGPL, GNU Lesser General Public License
+Author:: Joel Parker Henderson, joel@joelparkerhenderson.com
+Copyright:: Copyright (c) 2005-2011 Joel Parker Henderson
+License:: See LICENSE.txt file
 
 Simple gem to get and set the current user,
 using the related gem for current_user_id.

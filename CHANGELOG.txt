@@ -1,0 +1,4 @@
+CHANGELOG
+
+2011-04-19 Add self and more tests
+2011-04-18 Update for Ruby 1.9.2 and Rails 3.0.5
