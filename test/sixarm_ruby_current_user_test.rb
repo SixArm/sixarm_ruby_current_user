@@ -1,56 +1,54 @@
 require 'test/unit'
 require 'sixarm_ruby_current_user'
 require 'sixarm_ruby_current_user_id'
-require 'active_record_mock'
+require 'sixarm_ruby_active_record_mock'
+require 'simplecov'
+SimpleCov.start
 
-class Testing < Test::Unit::TestCase
-
- include CurrentUser
-  
- def session
-  @session||=Hash.new
- end
-
- def test_get
-  assert_not_nil(session,"session")
-  assert_nil(current_user,"current_user")
-  assert_nil(current_user_id,"current_user_id")
- end
-
- def test_set
-
-  # Verify we have a blank slate
-  assert_not_nil(session,"session")
-  assert_nil(current_user,"current_user")
-  assert_nil(current_user_id,"current_user_id")
-
-  # Create mock users
-  anne = User.new(:id => 1, :name => 'Anne')
-  beth = User.new(:id => 2, :name => 'Beth')
-  cate = User.new(:id => 3, :name => 'Cate')
-
-  # Set via object
-  current_user=beth
-  x=current_user
-  assert_equal(beth,x,"beth,x:#{x}")
-  assert_not_equal(anne,x,"anne,x:#{x}")
-  assert_not_equal(cate,x,"beth,x:#{x}")
-
-  # Clear
-  current_user=nil
-  assert_nil(current_user,"current_user")
-  assert_nil(current_user_id,"current_user_id")
-
-  # Set via id
-  current_user_id=2
-  assert_equal(beth,x,"beth,x:#{x}")
-  assert_not_equal(anne,x,"anne,x:#{x}")
-  assert_not_equal(cate,x,"beth,x:#{x}")
-
- end
-
-end
 
 class User < ActiveRecordMock
 end
+
+
+class Testing < Test::Unit::TestCase
+
+  include CurrentUser
+
+  ANNE_ID=1
+  BETH_ID=2
+  CATE_ID=3
+
+  ANNE = User.new(:id => ANNE_ID, :name => 'Anne')
+  BETH = User.new(:id => BETH_ID, :name => 'Beth')
+  CATE = User.new(:id => CATE_ID, :name => 'Cate')
+
+  def session
+    @session||=Hash.new
+  end
+
+  def test_blank_slate
+    assert_nil(current_user, "current_user")
+    assert_nil(current_user_id, "current_user_id")
+  end
+
+  def test_current_user_equals
+    current_user=BETH
+    actual=current_user
+    assert_equal(BETH, actual, "beth, actual:#{actual}")
+    assert_not_equal(ANNE, actual, "anne, actual:#{actual}")
+    assert_not_equal(CATE, actual, "cate, actual:#{actual}")
+  end
+
+  def test_current_user_clear
+    current_user=ANNE
+    assert_equal(ANNE, current_user, "current_user")
+    current_user=nil
+    assert_nil(current_user, "current_user")
+  end
+
+end
+
+
+
+
 
