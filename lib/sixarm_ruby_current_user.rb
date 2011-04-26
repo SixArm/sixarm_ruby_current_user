@@ -10,13 +10,17 @@ module CurrentUser
  include CurrentUserId
 
 
-  # Get the current user:
-  #  - if it is already set, then return it without doing a lookup
-  #  - otherwise, call User.find with the current_user_id
+  # Get the current user.
+  # 
+  # This calls User.find with the current_user_id
   #
-  # Return the current user, or nil if not found
+  # The current user is memoized as @current_user.
+  # To reload, pass :reload => true
+  #
+  # Return the current user, or raise an exception if not found
   
-  def current_user
+  def current_user(ops={})
+    if ops[:reload] then @current_user=nil end
     @current_user ||= User.find(self.current_user_id)
   end
   
