@@ -7,9 +7,6 @@ require 'sixarm_ruby_current_user_id'
 
 module CurrentUser
 
- include CurrentUserId
-
-
   # Get the current user.
   # 
   # This calls User.find with the current_user_id
@@ -17,11 +14,13 @@ module CurrentUser
   # The current user is memoized as @current_user.
   # To reload, pass :reload => true
   #
-  # Return the current user, or raise an exception if not found
+  # Return the current user,
+  # or nil if the current user id is not set,
+  # or raise an exception if the current iser id is invalid
   
   def current_user(ops={})
     if ops[:reload] then @current_user=nil end
-    @current_user ||= User.find(self.current_user_id)
+    @current_user ||= (current_user_id ? User.find(current_user_id) : nil)
   end
   
 

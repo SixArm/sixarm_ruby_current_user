@@ -6,10 +6,8 @@ require 'sixarm_ruby_active_record_mock'
 require 'simplecov'
 SimpleCov.start
 
-
 class User < ActiveRecordMock
 end
-
 
 class Testing < Test::Unit::TestCase
 
@@ -19,14 +17,40 @@ class Testing < Test::Unit::TestCase
   end
 
   include CurrentUser
+  include CurrentUserId
 
   ANNE = User.new(:id => 1, :name => 'Anne')
   BETH = User.new(:id => 2, :name => 'Beth')
   CATE = User.new(:id => 3, :name => 'Cate')
 
+
   def test_blank_slate
     assert_nil(current_user, "current_user")
     assert_nil(current_user_id, "current_user_id")
+  end
+
+  def test_return_nil_if_not_found
+    self.current_user_id=0
+    assert_equal(0, current_user_id, "current_user_id")
+    assert_nil(current_user, "current_user")
+  end
+
+  def test_current_user_memoize
+    self.current_user=BETH
+    self.current_user_id=CATE.id
+    assert_equal(BETH, current_user, "current_user is memoized, so current_user should be beth")
+  end
+
+  def test_current_user_id_reload_false
+    self.current_user=BETH
+    self.current_user_id=CATE.id
+    assert_equal(BETH, current_user(:reload=>false), "current_user reload => false, so current_user should be beth")
+  end
+
+  def test_current_user_id_reload_true
+    self.current_user=BETH
+    self.current_user_id=CATE.id
+    assert_equal(CATE, current_user(:reload=>true), "current_user reload => true, so current_user should be cate")
   end
 
   def test_current_user_question
