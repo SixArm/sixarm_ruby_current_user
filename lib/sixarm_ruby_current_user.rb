@@ -3,9 +3,16 @@
 Please see README.rdoc
 =end
 
-require 'sixarm_ruby_current_user_id'
 
 module CurrentUser
+
+
+  ###
+  #
+  # Methods for the User model
+  #
+  ###
+
 
   # Get the current user.
   # 
@@ -20,7 +27,7 @@ module CurrentUser
   
   def current_user(ops={})
     if ops[:reload] then @current_user=nil end
-    @current_user ||= (current_user_id ? User.find(current_user_id) : nil)
+    @current_user ||= (current_user_id(ops) ? User.find(current_user_id) : nil)
   end
   
 
@@ -39,4 +46,44 @@ module CurrentUser
     @current_user = user
   end
 
+
+  ###
+  #
+  #  Methods for the User id
+  #
+  ###
+
+
+  # Get the current user id in the Rails session array.
+  #
+  # The current user id is memoized as @current_user_id.
+  # To reload, pass :reload => true
+  #
+  # Return the session's current user id.
+
+  def current_user_id(ops={})
+    if ops[:reload] then @current_user_id=nil end
+    @current_user_id ||= session[:current_user_id]
+  end
+
+
+  # Is there a current user id in the Rails session array?
+
+  def current_user_id?
+    return session[:current_user_id] ? true : false
+  end
+
+
+  # Set the current user id in the Rails session array.
+  # Return the current user id, suitable for chaining.
+  
+  def current_user_id=(id)
+    @current_user_id=session[:current_user_id]=id
+  end
+
+
 end
+
+
+
+
