@@ -16,7 +16,7 @@ module CurrentUser
 
   # Get the current user.
   # 
-  # This calls User.find with the current_user_id
+  # This calls User.find_by_id with the current_user_id
   #
   # The current user is memoized as @current_user.
   # To reload, pass :reload => true
@@ -27,7 +27,7 @@ module CurrentUser
   
   def current_user(ops={})
     if ops[:reload] then @current_user=nil end
-    @current_user ||= (current_user_id(ops) ? User.find(current_user_id) : nil)
+    @current_user ||= (current_user_id(ops) ? User.find_by_id(current_user_id) : nil)
   end
   
 
