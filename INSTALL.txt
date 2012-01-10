@@ -1,6 +1,5 @@
 = SixArm.com Ruby Gem Install
 
-
 First-time users: add our gem certificate and source.
 When you do this once, it works for all our gems.
 
