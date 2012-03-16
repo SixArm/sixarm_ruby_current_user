@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require 'test/unit'
+require 'minitest/autorun'
 require 'sixarm_ruby_current_user'
 require 'sixarm_ruby_active_record_mock'
 require 'simplecov'
