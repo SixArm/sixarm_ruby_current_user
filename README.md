@@ -1,6 +1,7 @@
 # SixArm.com » Ruby » <br> CurrentUser module with current_user methods
 
-* Docs: <http://sixarm.com/sixarm_ruby_current_user/doc>
+* Doc: <http://sixarm.com/sixarm_ruby_current_user/doc>
+* Gem: <http://rubygems.org/gems/sixarm_ruby_current_user>
 * Repo: <http://github.com/sixarm/sixarm_ruby_current_user>
 * Email: Joel Parker Henderson, <joel@sixarm.com>
 
