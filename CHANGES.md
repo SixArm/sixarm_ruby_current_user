@@ -1,6 +1,7 @@
 # Changes
 
-* 2012-03-14 1.4.6 Update docs, tests
+* 2015-07-07 1.4.8 Update gemspec to use file manifest
+* 2012-03-14 1.4.7 Update docs, tests
 * 2011-05-10 1.4.6 Return nil if user is not found
 * 2011-04-26 1.4.4 Add current_user_id methods
 * 2011-04-25 1.4.0 Add memoize and :reload => true
