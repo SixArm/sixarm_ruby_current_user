@@ -20,12 +20,7 @@ Gem::Specification.new do |s|
   s.has_rdoc          = true
 
   s.files = [
-    ".gemtest",
-    "CHANGES.md",
-    "LICENSE.md",
     "Rakefile",
-    "README.md",
-    "VERSION",
     "lib/#{s.name}.rb",
   ]
 
