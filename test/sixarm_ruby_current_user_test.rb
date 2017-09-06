@@ -8,7 +8,7 @@ require "sixarm_ruby_active_record_mock"
 class User < ActiveRecordMock
 end
 
-class Testing < Test::Unit::TestCase
+class Testing < Minitest::Test
 
   # Mock session
   def session
