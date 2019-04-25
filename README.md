@@ -20,27 +20,27 @@ For docs go to <http://sixarm.com/sixarm_ruby_current_user/doc>
 Want to help? We're happy to get pull requests.
 
 
-<!--install-opent-->
+<!--install-open-->
 
 ## Install
 
-To install using a Gemfile, add this:
+### Gem
 
-    gem "sixarm_ruby_current_user", ">= 1.4.8", "< 2"
+To install this gem in your shell or terminal:
 
-To install using the command line, run this:
+    gem install sixarm_ruby_current_user
 
-    gem install sixarm_ruby_current_user -v ">= 1.4.8, < 2"
+### Gemfile
 
-To install using the command line with high security, run this:
+To add this gem to your Gemfile:
 
-    wget http://sixarm.com/sixarm.pem
-    gem cert --add sixarm.pem && gem sources --add http://sixarm.com
-    gem install sixarm_ruby_current_user -v ">= 1.4.8, < 2" --trust-policy HighSecurity
+    gem 'sixarm_ruby_current_user'
+
+### Require
 
 To require the gem in your code:
 
-    require "sixarm_ruby_current_user"
+    require 'sixarm_ruby_current_user'
 
 <!--install-shut-->
 
